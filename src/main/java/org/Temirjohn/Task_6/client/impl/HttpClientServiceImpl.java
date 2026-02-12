@@ -7,7 +7,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +45,7 @@ public class HttpClientServiceImpl implements HttpClientService {
             }
         } catch (Exception e) {
             long duration = System.currentTimeMillis() - start;
-            logger.log(Level.SEVERE, "Error request " + url, e);
+            logger.log(Level.WARNING, "Error request " + url, e.getMessage());
             return RequestResult.failure(url, duration, e.getMessage());
         }
     }
