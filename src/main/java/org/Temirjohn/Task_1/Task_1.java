@@ -10,26 +10,18 @@ public class Task_1 {
         for (int i = 0; i < size; i++) {
             list.add(1);
         }
-
         int numberOfThreads = 4;
-
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
-
         List<Future<Long>> futures = new ArrayList<>();
-
         int batchSize = list.size() / numberOfThreads;
-
         for (int i = 0; i < numberOfThreads; i++) {
             final int start = i * batchSize;
-
             final int end;
-
             if (i == numberOfThreads - 1) {
                 end = list.size();
             } else {
                 end = (i + 1) * batchSize;
             }
-
             List<Integer> subList = list.subList(start, end);
 
             Callable<Long> task = () -> {
